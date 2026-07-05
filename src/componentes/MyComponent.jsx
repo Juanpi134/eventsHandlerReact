@@ -6,7 +6,8 @@ function MiComponente(){
     const [comentario,setComentario] = useState("");
     const [pago,setPago] = useState(0);
     const [envio,setEnvio] = useState();
-
+    const [valor,setValor] = useState("");
+    const [lista,setLista] = useState([]);
 
     //me muestra undefined
     //console.log(nombre);
@@ -33,6 +34,27 @@ function MiComponente(){
 
     function manejarCambioDeEnvio(evento){
         setEnvio(evento.target.value);
+    }
+
+    function manejearTecla(evento){
+        /*
+        if(evento.key === "Enter"){
+            console.log(true);
+        }
+            */
+           if(evento.key === "Enter" && valor.trim() !== ""){
+                setLista([...lista,valor]);
+                //me devuelve el valor que presiono cuando agrego
+                //'a'
+                console.log(valor);
+
+                //['a', 'a', 'a']
+                console.log(lista);
+
+                //(2) ['a', 'a']
+                console.log([...lista,valor])
+                setValor("");
+           }
     }
 
     return (
@@ -65,7 +87,18 @@ function MiComponente(){
                 <input type="radio" value="Delivery" checked={envio === "Delivery"} onChange={manejarCambioDeEnvio} />
             </label>
             <p>Envio: {envio}</p>
+
+            {/* cuando doy enter me devuelve true */}
+            <input type="text" value={valor} onKeyDown={manejearTecla} onChange={(e) => setValor(e.target.value)} />
+            <ul>
+                {lista.map((elemento,i) => {
+                    return <li key={i}>{elemento}</li>
+                })}
+            </ul>
         </div>
+
+        
+        
     )
 }
 
