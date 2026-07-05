@@ -35,6 +35,7 @@ function MiComponente(){
             <p>{cantidad}</p>
 
             <textarea value={comentario} onChange={manejarCambioDeComentarios}></textarea>
+            <p>{comentario}</p>
         </div>
     )
 }
