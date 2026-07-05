@@ -3,6 +3,8 @@ import { useState } from "react";
 function MiComponente(){
     const [nombre,setNombre] = useState("");
     const [cantidad,setCantidad] = useState(0);
+    const [comentario,setComentario] = useState("");
+
 
     //me muestra undefined
     //console.log(nombre);
@@ -17,6 +19,11 @@ function MiComponente(){
        setCantidad(evento.target.value)
     }
 
+
+    function manejarCambioDeComentarios(evento){
+        setComentario(evento.target.value);
+    }
+
     return (
         <div>
             <input type="text"  value={nombre} onChange={manejarCambioDeNombre} />
@@ -26,6 +33,8 @@ function MiComponente(){
             <input type="number" value={cantidad}  onChange={manejarCambioDeCantidad}/>
             {/* mostramos los numeros en tiempo real */}
             <p>{cantidad}</p>
+
+            <textarea value={comentario} onChange={manejarCambioDeComentarios}></textarea>
         </div>
     )
 }
