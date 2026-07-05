@@ -5,6 +5,7 @@ function MiComponente(){
     const [cantidad,setCantidad] = useState(0);
     const [comentario,setComentario] = useState("");
     const [pago,setPago] = useState(0);
+    const [envio,setEnvio] = useState();
 
 
     //me muestra undefined
@@ -29,6 +30,11 @@ function MiComponente(){
         setPago(evento.target.value);
     }
 
+
+    function manejarCambioDeEnvio(evento){
+        setEnvio(evento.target.value);
+    }
+
     return (
         <div>
             <input type="text"  value={nombre} onChange={manejarCambioDeNombre} />
@@ -50,6 +56,15 @@ function MiComponente(){
             </select>
 
             <p>{pago}</p>
+
+
+            <label htmlFor="">
+                <input type="radio" value="Pick up" checked={envio === "Pick up"} onChange={manejarCambioDeEnvio}/>
+            </label>
+            <label htmlFor="">
+                <input type="radio" value="Delivery" checked={envio === "Delivery"} onChange={manejarCambioDeEnvio} />
+            </label>
+            <p>Envio: {envio}</p>
         </div>
     )
 }
