@@ -24,6 +24,8 @@ function MiComponente(){
 
             {/* si le saco el valor tanto al nombre como la cantidad no me deja escribir */}
             <input type="number" value={cantidad}  onChange={manejarCambioDeCantidad}/>
+            {/* mostramos los numeros en tiempo real */}
+            <p>{cantidad}</p>
         </div>
     )
 }
