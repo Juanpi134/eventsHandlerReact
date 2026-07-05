@@ -4,6 +4,7 @@ function MiComponente(){
     const [nombre,setNombre] = useState("");
     const [cantidad,setCantidad] = useState(0);
     const [comentario,setComentario] = useState("");
+    const [pago,setPago] = useState(0);
 
 
     //me muestra undefined
@@ -24,6 +25,10 @@ function MiComponente(){
         setComentario(evento.target.value);
     }
 
+    function manejarCambioDePagos(evento){
+        setPago(evento.target.value);
+    }
+
     return (
         <div>
             <input type="text"  value={nombre} onChange={manejarCambioDeNombre} />
@@ -36,6 +41,15 @@ function MiComponente(){
 
             <textarea value={comentario} onChange={manejarCambioDeComentarios}></textarea>
             <p>{comentario}</p>
+
+            <select value={pago} onChange={manejarCambioDePagos}>
+                <option value="">Ingrese una opción</option>
+                <option value="mercado-pago">Mercado pago</option>
+                <option value="Buepp">Buepp</option>
+                <option value="cuenta-dni">Cuenta Dni</option>
+            </select>
+
+            <p>{pago}</p>
         </div>
     )
 }
