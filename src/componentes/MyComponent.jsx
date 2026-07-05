@@ -8,7 +8,7 @@ function MiComponente(){
     const [envio,setEnvio] = useState();
     const [valor,setValor] = useState("");
     const [lista,setLista] = useState([]);
-
+    const [datos, setDatos] = useState({ nombre: "", apellido: "" });
     //me muestra undefined
     //console.log(nombre);
 
@@ -57,6 +57,22 @@ function MiComponente(){
            }
     }
 
+    function manejarCambio(evento){
+        const {name,value} = evento.target;
+        setDatos({...datos, [name]:value});
+
+        //nombre, apellido
+        console.log(name);
+
+        //juan,tapia
+        console.log(value);
+
+        //{nombre:'alan', apellido:'camino'}
+        console.log(datos);
+
+        console.log({...datos})
+    }
+
     return (
         <div>
             <input type="text"  value={nombre} onChange={manejarCambioDeNombre} />
@@ -95,6 +111,13 @@ function MiComponente(){
                     return <li key={i}>{elemento}</li>
                 })}
             </ul>
+
+
+            <input name="nombre" value={datos.nombre} onChange={manejarCambio} placeholder="Nombre" />
+            <input name="apellido" value={datos.apellido} onChange={manejarCambio} placeholder="Apellido" />
+            <p>{datos.nombre} {datos.apellido}</p>
+
+
         </div>
 
         
